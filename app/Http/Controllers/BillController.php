@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Actions\ValidateAction;
+use App\Exceptions\InvalidRequestException;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
@@ -9,8 +10,22 @@ class BillController extends Controller
     //
 
 
+    public function createTransaction(Request $request, 
+            ValidateAction $ValidateAction ){
+           $data = $request->all();
+           try{
+               $this->validateAction->execute($data, $this->billsRules(), $this->validationMessage());
+               
+           }catch(InvalidRequestException $exception){
+            throw new InvalidRequestException($exception->getMessage());
+           }
+                
 
-    private function merchantRules()
+    }
+
+
+
+    private function billsRules()
     {
         return [
             'username' => 'required|unique:bills,username',
