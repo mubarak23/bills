@@ -18,6 +18,7 @@ class BillController extends Controller
                $this->validateAction->execute($data, $this->billsRules(), $this->validationMessage());
                $bills = $BillAction->execute($data);
                //send request to external api
+               return response()->json($bills);
            }catch(InvalidRequestException $exception){
             throw new InvalidRequestException($exception->getMessage());
            }

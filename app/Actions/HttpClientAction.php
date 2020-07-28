@@ -1,8 +1,7 @@
 <?php
-namespace App\Actions;
+namespace App\Actions\HttpClientAction;
 
 
-use App\Exceptions\PaymentException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
