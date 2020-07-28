@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'bills'], function() {
     Route::get('transaction', [
         'uses' => 'BillController@createTransaction',
-        'as' => 'merchant_details'
+        'as' => 'Bills Transaction'
     ]);
     
 });
