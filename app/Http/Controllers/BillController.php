@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Actions\ValidateAction;
+use App\Actions\BillAction;
 use App\Exceptions\InvalidRequestException;
 use Illuminate\Http\Request;
 
@@ -11,11 +12,12 @@ class BillController extends Controller
 
 
     public function createTransaction(Request $request, 
-            ValidateAction $ValidateAction ){
+            ValidateAction $ValidateAction, BillAction $BillAction ){
            $data = $request->all();
            try{
                $this->validateAction->execute($data, $this->billsRules(), $this->validationMessage());
-               
+               $bills = $BillAction->execute($data);
+               //send request to external api
            }catch(InvalidRequestException $exception){
             throw new InvalidRequestException($exception->getMessage());
            }
