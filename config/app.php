@@ -14,6 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'api_bank' => env('api_bank', 'api.gtbank.com'),
+    'api_appname' => env('api_appname', 'authname'),
+    'api_password' => env('api_password', 'password'),
 
     /*
     |--------------------------------------------------------------------------
